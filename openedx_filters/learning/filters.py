@@ -572,6 +572,7 @@ class RenderXBlockStarted(OpenEdxPublicFilter):
         data = super().run_pipeline(context=context, student_view_context=student_view_context)
         return data.get("context"), data.get("student_view_context")
 
+
 class VerticalBlockRenderCompleted(OpenEdxPublicFilter):
     """
     Custom class used to create filters to act on vertical block rendering completed.
