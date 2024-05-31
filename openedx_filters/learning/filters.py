@@ -548,8 +548,7 @@ class CourseEnrollmentQuerysetRequested(OpenEdxPublicFilter):
 
 class RenderXBlockStarted(OpenEdxPublicFilter):
     """
-    Custom class used to intercept rendering of XBlock. Occurs after all context is created,
-    but before render.
+    Filter in between context generation and rendering of XBlock scope.
     """
 
     filter_type = "org.openedx.learning.xblock.render.started.v1"
