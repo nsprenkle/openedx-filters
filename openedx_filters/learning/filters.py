@@ -546,12 +546,12 @@ class CourseEnrollmentQuerysetRequested(OpenEdxPublicFilter):
         return data.get("enrollments")
 
 
-class RenderXBlockCompleted(OpenEdxPublicFilter):
+class RenderXBlockStarted(OpenEdxPublicFilter):
     """
     Filter in between context generation and rendering of XBlock scope.
     """
 
-    filter_type = "org.openedx.learning.xblock.render.completed.v1"
+    filter_type = "org.openedx.learning.xblock.render.started.v1"
 
     class PreventXBlockBlockRender(OpenEdxFilterException):
         """
@@ -566,6 +566,7 @@ class RenderXBlockCompleted(OpenEdxPublicFilter):
         Arguments:
             context (dict): rendering context values like is_mobile_app, show_title..etc.,
             student_view_context (dict): context passed to the student_view, includes query params
+            request (request): requests object
         """
         data = super().run_pipeline(context=context, student_view_context=student_view_context)
         return data.get("context"), data.get("student_view_context")
