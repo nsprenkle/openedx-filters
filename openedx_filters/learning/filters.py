@@ -564,9 +564,8 @@ class RenderXBlockStarted(OpenEdxPublicFilter):
         Execute a filter with the specified signature.
 
         Arguments:
-            context (dict): rendering context values like is_mobile_app, show_title..etc.,
-            student_view_context (dict): context passed to the student_view, includes query params
-            request (request): requests object
+            context (dict): rendering context values like is_mobile_app, show_title, etc.
+            student_view_context (dict): context passed to the student_view of the block context
         """
         data = super().run_pipeline(context=context, student_view_context=student_view_context)
         return data.get("context"), data.get("student_view_context")
