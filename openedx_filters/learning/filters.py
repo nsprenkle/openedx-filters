@@ -555,8 +555,23 @@ class RenderXBlockStarted(OpenEdxPublicFilter):
 
     class PreventXBlockBlockRender(OpenEdxFilterException):
         """
-        Custom class used to prevent the vertical block from rendering for the user.
+        Custom class used to prevent the XBlock from rendering for the user.
         """
+
+    class RenderCustomResponse(OpenEdxFilterException):
+        """
+        Custom class used to stop the XBlock rendering process and return a custom response.
+        """
+
+        def __init__(self, message, response=None):
+            """
+            Override init that defines specific arguments used in the XBlock render process.
+
+            Arguments:
+                message: error message for the exception.
+                response: custom response which will be returned by the XBlock render view.
+            """
+            super().__init__(message, response=response)
 
     @classmethod
     def run_filter(cls, context, student_view_context):

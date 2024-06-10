@@ -522,6 +522,26 @@ class TestRenderingFilters(TestCase):
 
         self.assertDictContainsSubset(attributes, exception.__dict__)
 
+    @data(
+        (
+            RenderXBlockStarted.RenderCustomResponse,
+            {
+                "message": "Danger, Will Robinson!"
+            }
+        )
+    )
+    @unpack
+    def test_halt_xblock_render_custom_response(self, xblock_render_exception, attributes):
+        """
+        Test for xblock render exception attributes.
+
+        Expected behavior:
+            - The exception must have the attributes specified.
+        """
+        exception = xblock_render_exception(**attributes)
+
+        self.assertDictContainsSubset(attributes, exception.__dict__)
+
     def test_account_settings_render_started(self):
         """
         Test AccountSettingsRenderStarted filter behavior under normal conditions.
